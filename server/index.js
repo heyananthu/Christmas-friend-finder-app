@@ -26,10 +26,10 @@ mongoose.connect(process.env.MONGO_URL)
 app.use("/api/employees", employeeRoutes);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/chatapp/dist')));
+  app.use(express.static(path.join(__dirname, '../client/myapp/dist')));
 
   app.use((req, res) => {
-    res.sendFile(path.join(__dirname, '../client/chatapp/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/myapp/dist/index.html'));
   });
 
 }
