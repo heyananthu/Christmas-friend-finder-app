@@ -1,6 +1,8 @@
 import express from "express";
 import Employee from "../model/Employee.js";
 import nodemailer from "nodemailer";
+import SibApiV3Sdk from '@sendinblue/client';
+
 
 const router = express.Router();
 
@@ -46,15 +48,11 @@ router.post("/match", async (req, res) => {
       pairs.push({ giver, receiver });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp-relay.brevo.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.BREVO_USER, // 9bf7xxxx@smtp-brevo.com
-        pass: process.env.BREVO_PASS, // xsmtpsib-xxxxxx...
-      },
-    });
+    const brevo = new SibApiV3Sdk.TransactionalEmailsApi();
+    brevo.setApiKey(
+      SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
+      process.env.BREVO_API_KEY
+    );
 
     for (let p of pairs) {
 
@@ -134,11 +132,11 @@ router.post("/match", async (req, res) => {
 
       `;
 
-      await transporter.sendMail({
-        from: process.env.SENDER_EMAIL,
-        to: p.giver.email,
+      await brevo.sendTransacEmail({
+        sender: { name: "Voicene", email: process.env.SENDER_EMAIL },
+        to: [{ email: p.giver.email }],
         subject: "🎄 Your Christmas Friend!",
-        html: htmlTemplate,
+        htmlContent: htmlTemplate // your same HTML
       });
     }
 
