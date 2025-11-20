@@ -39,7 +39,7 @@ export default function EmployeeForm() {
     return (
         <>
             {/* Layout Container */}
-            <div className="min-h-screen flex items-center justify-center px-4 py-6">
+            <div className="min-h-screen flex items-center justify-center px-4 py-6 bg-black">
                 <div className="w-full max-w-xl">
 
                     {/* Main Glass Card */}
