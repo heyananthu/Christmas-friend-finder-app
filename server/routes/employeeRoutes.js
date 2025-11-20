@@ -6,13 +6,23 @@ const router = express.Router();
 
 router.post("/add", async (req, res) => {
   try {
+    const { email } = req.body;
+
+    const existingEmployee = await Employee.findOne({ email });
+
+    if (existingEmployee) {
+      return res.status(400).json({ error: "Email already exists!" });
+    }
+
     const newEmployee = new Employee(req.body);
     await newEmployee.save();
+
     res.json({ msg: "Employee added" });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ error: "Server error: " + err.message });
   }
 });
+
 
 router.get("/", async (req, res) => {
   const employees = await Employee.find();
