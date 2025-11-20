@@ -26,7 +26,7 @@ export default function Admin() {
         setLoadingAnimation(true);
         try {
             await axiosInstance.post("/employees/match");
-            toast.success("Secret Santa matching complete! Emails sented");
+            toast.success("Santa matching complete!Emails sended");
             fetchEmployees();
         } catch (err) {
             toast.error("Matching failed. Try again.");
