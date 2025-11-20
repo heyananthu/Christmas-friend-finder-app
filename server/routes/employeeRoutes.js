@@ -31,6 +31,16 @@ router.get("/", async (req, res) => {
   res.json(employees);
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const employeeId = req.params.id;
+    await Employee.findByIdAndDelete(employeeId);
+    res.json({ msg: "Employee deleted" });
+  } catch (err) {
+    res.status(500).json({ error: "Server error: " + err.message });
+  }
+})
+
 router.post("/match", async (req, res) => {
   try {
     const employees = await Employee.find();

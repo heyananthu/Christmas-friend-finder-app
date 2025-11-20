@@ -125,7 +125,7 @@ export default function EmployeeForm() {
                         </form>
 
                         {/* Match Button */}
-                        <div className="mt-8">
+                        {/* <div className="mt-8">
                             <button onClick={handleMatch} className="btn-red">
                                 🎄 Generate Voicene Secret Santa Matches
                             </button>
@@ -133,7 +133,7 @@ export default function EmployeeForm() {
                             <p className="text-white/70 text-center mt-3 text-sm">
                                 Auto-pairs all participants & sends secret emails!
                             </p>
-                        </div>
+                        </div> */}
 
                         {/* Footer Text */}
                         <p className="text-center text-white/60 mt-8 text-sm italic">
