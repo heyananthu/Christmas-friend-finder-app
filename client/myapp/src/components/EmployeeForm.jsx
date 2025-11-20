@@ -19,8 +19,9 @@ export default function EmployeeForm() {
             await axiosInstance.post("/employees/add", form);
             toast.success("Added to the Nice List! 🎁");
             setForm({ name: "", email: "", interests: "", preferences: "" });
+            
         } catch (err) {
-            toast.error("Error: " + (err.response?.data?.error || "Something went wrong"));
+            toast.error(    (err.response?.data?.error || "Something went wrong"));
         }
     };
 
