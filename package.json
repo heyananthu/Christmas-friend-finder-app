@@ -1,0 +1,13 @@
+{
+  "name": "chrismass-friend-finder-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build":"npm install --prefix server && npm install --prefix client/myapp && npm run build --prefix client/myapp",
+    "start": "npm run start --prefix server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
