@@ -123,14 +123,14 @@ export default function Admin() {
                                             </p>
                                         </div>
 
-                                        <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                                        {/* <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
                                             <div className="flex items-center gap-3 mb-2">
                                                 <span className="font-semibold text-red-400">Gift Ideas</span>
                                             </div>
                                             <p className="text-gray-200">
                                                 {emp.preferences || "Surprise me!"}
                                             </p>
-                                        </div>
+                                        </div> */}
                                     </div>
 
 

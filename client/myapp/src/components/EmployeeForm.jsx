@@ -10,7 +10,6 @@ export default function EmployeeForm() {
         name: "",
         email: "",
         interests: "",
-        preferences: "",
     });
 
     const handleSubmit = async (e) => {
@@ -18,7 +17,7 @@ export default function EmployeeForm() {
         try {
             await axiosInstance.post("/employees/add", form);
             toast.success("Added to the Nice List! 🎁");
-            setForm({ name: "", email: "", interests: "", preferences: "" });
+            setForm({ name: "", email: "", interests: "" });
         } catch (err) {
             toast.error(err.response?.data?.error || "Something went wrong");
         }
@@ -100,7 +99,7 @@ export default function EmployeeForm() {
                                 <label className="label">Your Interests</label>
                                 <input
                                     type="text"
-                                    placeholder="Books, Music, Coffee..."
+                                    placeholder="Books, Music, Gadgets..."
                                     value={form.interests}
                                     onChange={(e) => setForm({ ...form, interests: e.target.value })}
                                     className="input"
@@ -108,7 +107,7 @@ export default function EmployeeForm() {
                             </div>
 
                             {/* Gift Preferences */}
-                            <div>
+                            {/* <div>
                                 <label className="label">Gift Preferences</label>
                                 <textarea
                                     placeholder="Anything special they should know?"
@@ -116,7 +115,7 @@ export default function EmployeeForm() {
                                     onChange={(e) => setForm({ ...form, preferences: e.target.value })}
                                     className="input h-24 resize-none"
                                 ></textarea>
-                            </div>
+                            </div> */}
 
                             {/* Submit Button */}
                             <button className="btn-green">

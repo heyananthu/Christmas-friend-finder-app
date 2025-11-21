@@ -119,9 +119,7 @@ router.post("/match", async (req, res) => {
       <b>🎯 Interests:</b> ${p.receiver.interests || "Not provided"}
     </p>
 
-    <p style="margin:4px 0; font-size:14px; color:#444;">
-      <b>🎁 Preferences:</b> ${p.receiver.preferences || "Not provided"}
-    </p>
+  
   </div>
 
   <p style="color:#444; font-size:15px;">
