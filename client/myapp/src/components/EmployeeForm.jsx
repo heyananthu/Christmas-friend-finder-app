@@ -118,7 +118,7 @@ export default function EmployeeForm() {
                             </div> */}
 
                             {/* Submit Button */}
-                            <button className="btn-green">
+                            <button className="btn-green cursor-pointer">
                                 Add Me to the Voicene Nice List 🎁
                             </button>
                         </form>

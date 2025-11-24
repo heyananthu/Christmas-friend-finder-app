@@ -6,10 +6,13 @@ import loading from "../assets/loading3.json";
 import { toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { axiosInstance } from "../lib/axios";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 export default function Admin() {
     const [employees, setEmployees] = useState([]);
     const [loadingAnimation, setLoadingAnimation] = useState(false);
+    const navigate = useNavigate();
+
 
     const fetchEmployees = async () => {
         try {
@@ -19,6 +22,12 @@ export default function Admin() {
             toast.error("Failed to load employees");
         }
     };
+    useEffect(() => {
+        const isAdminLoggedIn = localStorage.getItem("admin")
+        if (!isAdminLoggedIn) {
+            navigate('/login')
+        }
+    })
 
     useEffect(() => { fetchEmployees(); }, []);
 
@@ -54,6 +63,22 @@ export default function Admin() {
 
             {/* Pure Black Background */}
             <div className="min-h-screen bg-black text-white px-4 py-12">
+                <button
+                    onClick={() => {
+                        localStorage.removeItem("admin");
+                        toast.success("Logged out! 🎄");
+                        window.location.href = "/login";
+                    }}
+                    className="absolute top-6 right-6 z-20
+  text-white bg-white/10 backdrop-blur-xl border border-white/20
+  rounded-full w-10 h-10 flex items-center justify-center
+  hover:bg-white/20 transition-all duration-300 
+  shadow-lg hover:scale-110 cursor-pointer"
+                    title="Logout"
+                >
+                    <MdLogout size={21} className="text-red-400 group-hover:text-red-500 transition-colors" />
+                </button>
+
 
                 {/* Header */}
                 <motion.div
